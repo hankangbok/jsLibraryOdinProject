@@ -8,13 +8,42 @@ const og3= new Book("BLueJ and JS","Joo");
 myLibrary.push(og3);
 const og4= new Book("Alice in WonderLand","Lewis Carroll",true);
 myLibrary.push(og4);
-const og5= new Book("Harry Potter","JK Rowling",true);
+const og5= new Book("Lord of the Rings","JRR Tolkien",true);
 myLibrary.push(og5);
 
 function Book(title,author,read=false) {
   this.title=title;
   this.author=author;
   this.read=read;
+}
+// This function should make a visible display of each book 
+//as they are added to the library
+function renderBook(Book) {
+  const container=document.querySelector('#container');
+  
+  const content = document.createElement('div');
+  content.classList.add('buttondiv');
+  
+  singleBookHTML='';
+  for (i in myLibrary) {
+    let currentBook = myLibrary[i];
+    singleBookHTML+=`
+      <div class = "buttondiv">
+      <h2>${currentBook.title}</h2>
+      <h3>${currentBook.author}<h3>
+      <button onclick='readToggle(${i});'>I have read this book</button>
+      <button onclick='removeBook(${i});'>Remove this book</button>`
+      
+    if (currentBook.read==true) {
+      singleBookHTML+=`<h2>I've read this Book</h2>`
+    }
+    else {singleBookHTML+='<h2>...I have not finished this book.</h2>'}
+
+    singleBookHTML+=`</div>`
+  }
+
+  container.innerHTML=singleBookHTML;
+
 }
 
 function addBookToLibrary() {
@@ -39,89 +68,16 @@ function readToggle(i) {
   renderBook(myLibrary[i]);
 }
 
-
-// This function should make a visible display of each book 
-//as they are added to the library
-function renderBook(Book) {
-  const container=document.querySelector('#container');
-  
-  const content = document.createElement('div');
-  content.classList.add('buttondiv');
-  
-  singleBookHTML='';
-  buttonHTML='THIS IS TEXT<h2> ${Book.title}</h2>';
-  for (i in myLibrary) {
-    let currentBook = myLibrary[i];
-    singleBookHTML+=`
-      <div class = "buttondiv">
-      <h2>${currentBook.title}</h2>
-      <h3>${currentBook.author}<h3>
-      <button onclick='readToggle(${i});'>I have read this book</button>
-      <button onclick='removeBook(${i});'>Remove this book</button>`
-      
-    if (currentBook.read==true) {
-      singleBookHTML+=`<h2>I've read this Book</h2>`
-    }
-    else {singleBookHTML+='<h2>...I have not finished this book.</h2>'}
-
-    singleBookHTML+=`</div>`
-  }
-
-  container.innerHTML=singleBookHTML;
-
-
-
-  // content.textContent=Book.title+" "+Book.author+Book.read;
-  // var removeBook=document.createElement('button');
-  // var buttonText=document.createTextNode("Remove book from library");
-  
-  // removeBook.addEventListener('click',function() {
-  //   container.removeChild(content);        
-  // })
-
-
-  // var isRead=document.createElement('button');
-  // var isReadText=document.createTextNode('Read this book');
-    
-  // isRead.appendChild(isReadText);
-  // removeBook.appendChild(buttonText);
-  
-  // content.appendChild(isRead);
-  // content.appendChild(removeBook);
-  
-  // //initialize the item to the DOM
-  // container.appendChild(content);
-  
-  // isRead.addEventListener('click',function(Book) {
-  //   if (Book.read==true) {
-  //     Book.read=false;
-  //     console.log(Book.read);
-  //   }
-  //   else{
-  //     Book.read=true;
-  //     console.log(Book.read);
-  //   }
-  //   // Change the text content so the correct 'read' value is displayed.
-  //   //content.textContent=Book.title+Book.author+Book.read;
-  //   // isRead.appendChild(isReadText);
-  //   //content.appendChild(isRead);
-  //   // removeBook.appendChild(buttonText);
-  //   //content.appendChild(removeBook);
-
-  //   //container.appendChild(content);
-  // })
-
-
-}
-
-
 function showAllBooks(){
-i=0;
-while (i<myLibrary.length){
-  renderBook(myLibrary[i]);
-  console.log("this is book" + i);
-  i++;
+  i=0;
+  while (i<myLibrary.length){
+    renderBook(myLibrary[i]);
+    console.log("this is book" + i);
+    i++;
+  }
 }
-}
+
+
+
 
 showAllBooks();
