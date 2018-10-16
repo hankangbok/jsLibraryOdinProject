@@ -13,16 +13,27 @@ header {
   font-size: 40px;
 }
 
+button {
+  border:none;
+  background-color:rgb(0,0,53);
+  color:white;
+  margin:5px;
+}
+
 /* container will be flexbox */
 #container {
   display:flex;
   flex-wrap:wrap;
+  text-align: center;
 }
 
 .buttondiv {
   margin: 10px;
   background-color: pink;
+  color:rgb(0, 0, 53);
+  font-size:20px;
+
   /* flex properties */
   flex:1;
-  max-width:33%;
-}
+  width:calc(33%-50px);
+  }
