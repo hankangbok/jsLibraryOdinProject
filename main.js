@@ -37,7 +37,7 @@ function renderBook(Book) {
   content.classList.add('buttondiv');
 
   buttonHTML='THIS IS TEXT<h2> ${Book.title}</h2>';
-
+  
 
   content.textContent=Book.title+" "+Book.author+Book.read;
   var removeBook=document.createElement('button');
