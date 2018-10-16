@@ -1,14 +1,14 @@
 let myLibrary=[]
 //These are just some preliminary books for example sake
-const og1= new Book("book1","author1");
+const og1= new Book("Doctor Who","David Tennant");
 myLibrary.push(og1);
-const og2= new Book("book2","author2");
+const og2= new Book("Giancoli Physics","Giancoli");
 myLibrary.push(og2);
-const og3= new Book("book3","author3");
+const og3= new Book("BLueJ and JS","Joo");
 myLibrary.push(og3);
-const og4= new Book("book4","author4",true);
+const og4= new Book("Alice in WonderLand","Lewis Carroll",true);
 myLibrary.push(og4);
-const og5= new Book("book5","author5",true);
+const og5= new Book("Harry Potter","JK Rowling",true);
 myLibrary.push(og5);
 
 function Book(title,author,read=false) {
@@ -25,10 +25,6 @@ function addBookToLibrary() {
   const newBook = new Book(title,author,read);
   myLibrary.push(newBook);
   renderBook(newBook);
-  // for (i in myLibrary) {
-  //   console.log(i);
-  //   console.table(myLibrary);
-  // }
   return myLibrary;
 }
 
@@ -39,9 +35,14 @@ function renderBook(Book) {
   
   const content = document.createElement('div');
   content.classList.add('buttondiv');
+
+  buttonHTML='THIS IS TEXT<h2> ${Book.title}</h2>';
+
+
   content.textContent=Book.title+" "+Book.author+Book.read;
   var removeBook=document.createElement('button');
   var buttonText=document.createTextNode("Remove book from library");
+  
   removeBook.addEventListener('click',function() {
     container.removeChild(content);        
   })
@@ -92,4 +93,3 @@ while (i<myLibrary.length){
 }
 
 showAllBooks();
-//window.onload=addBookToLibrary();
