@@ -1,4 +1,4 @@
-#Build a Personal Library
+# Build a Personal Library
 This is a solution to the "Library Project" on <i>The Odin Project </i>: 
 https://www.theodinproject.com/courses/javascript/lessons/library?ref=lnav.
 
